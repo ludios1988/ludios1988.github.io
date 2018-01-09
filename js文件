@@ -1,0 +1,37 @@
+
+
+function insertAfter(newNode,oldNode){
+	if(oldNode==oldNode.parentNode.lastChild)
+		oldNode.parentNode.appendChild(newNode);
+	else
+		oldNode.parentNode.insertBefore(newNode,oldNode.nextSibling);
+}
+
+	var para=document.createElement("P");
+	para.innerHTML="default description";
+	var pic=document.createElement("img");
+	pic.src="";
+	pic.alt="默认图片";
+	var list=document.getElementsByTagName("ul");
+	insertAfter(pic,list[0]);
+	insertAfter(para,list[0]);
+	
+
+	
+function showPic(whichPic){
+	var gethref=whichPic.getAttribute("href");
+	var gettitle=whichPic.getAttribute("title");
+	pic.setAttribute("src",gethref);
+	para.firstChild.nodeValue=gettitle;
+}
+
+    var links=document.getElementsByTagName('ul');
+    var link=links[0].getElementsByTagName('a');
+var i=0;
+function count(){
+	showPic(link[i]);
+	i++;
+	if(i>=link.length)
+		i=0;
+}
+setInterval("count()",1000);
